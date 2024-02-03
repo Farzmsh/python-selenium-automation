@@ -12,22 +12,13 @@ service = Service(driver_path)
 driver = webdriver.Chrome(service = service)
 driver.maximize_window()
 
-# open the url
-driver.get('https://www.google.com/')
+driver.get('https://www.target.com/')
+search_word = "coffee"
+driver.find_element(By.ID,"search").send_keys(search_word)
+driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
+sleep(6)
+actual_result = driver.find_element(By.XPATH,"//div[@data-test='resultsHeading']").text
 
-# populate search field
-search = driver.find_element(By.NAME, 'q')
-search.clear()
-search.send_keys('Car')
-
-# wait for 4 sec
-sleep(4)
-
-# click search button
-driver.find_element(By.NAME, 'btnK').click()
-
-# verify search results
-assert 'car' in driver.current_url.lower(), f"Expected query not in {driver.current_url.lower()}"
-print('Test Passed')
-
-driver.quit()
+assert search_word in actual_result, f"Expected word {search_word} not in {search_word}"
+print("Test is passed!! ")
+driver.close()
