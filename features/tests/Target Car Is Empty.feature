@@ -11,7 +11,7 @@ Feature: Target.com cart is empty
 
   Scenario: Add an item Target’s product
   Given Open Target web page
-  When Search for item and add the item into the cart
+  When Search for Coffee
   Then verify the item's cart
 
 #------------------------------------------------------
