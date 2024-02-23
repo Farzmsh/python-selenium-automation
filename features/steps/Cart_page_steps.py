@@ -2,6 +2,9 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
+view_card_btn = (By.CSS_SELECTOR, "a[href='/cart'][class*='styles__StyledBaseButtonInternal']")
+cart_item_title = (By.CSS_SELECTOR,"div[data-test='cartItem-title']")
+
 
 @then('verify the item\'s cart')
 def verify_item(context):
@@ -11,9 +14,15 @@ def verify_item(context):
     print( "****    Cart has individual cart items  ****" )
 
 
-@then('Your cart is empty')
-def step_impl(context):
-    cart_is_empty = context.driver.find_element(By.XPATH, "//div[@data-test='boxEmptyMsg']").text
-    assert "Your cart is empty" in cart_is_empty, f"Error "
-    print()
-    print("*****    'Your cart is empty' message is shown      *****" )
+@then('Verify \'your cart empty\' message is shown')
+def verify_cart_empty_message(context):
+    actual_text = context.app.cart_page.verify_cart_empty_message()
+    print(actual_text)
+
+
+@then('Verify cart has {item_for_search}')
+def step_impl(context,item_for_search):
+    actual_item_in_the_cart = context.driver.find_element(*cart_item_title).text
+    print(actual_item_in_the_cart)
+    assert context.products_name_side_nav in actual_item_in_the_cart, f"{item_for_search} is not in cart"
+    print("test passed")

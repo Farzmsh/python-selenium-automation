@@ -1,21 +1,20 @@
 Feature: Target.com website
 
   Scenario: user can search for coffee on target
-    Given Open target page
-    When Search for Coffee
-    Then Search result for Coffee are shown
-    Then Page URL has search term Coffee
+    Given Open target main page
+    When Search for coffee
+    Then Search result for coffee are shown
+    Then Page URL has search term coffee
 
 
-  Scenario: user can search for mug on target
-    Given Open target page
-    When Search for mug
-    Then Search result for mug are shown
-    Then Page URL has search term mug
+  Scenario: 'Your cart is empty' message is shown for empty cart
+    Given Open target main page
+    When click on card Icons
+    Then Verify 'your cart empty' message is shown
 
 
   Scenario Outline: user can search for a product on target
-    Given Open target page
+    Given Open target main page
     When Search for <items>
     Then Search result for <expected_result> are shown
     Then Page URL has search term <expected_url>
@@ -27,17 +26,17 @@ Feature: Target.com website
 
 
   Scenario: Verify header in shown
-    Given Open target page
+    Given Open target main page
     Then Verify header in shown
 
 
   Scenario: Verify header has 5 link
-    Given Open target page
+    Given Open target main page
     Then Verify header has 5 link
 
 
   Scenario: verify there are 5 benefit boxes in Target circle
-    Given Open target page
+    Given Open target main page
     When  open target circle page
     Then  verify there are 5 benefit boxes in Target circle
 
@@ -62,7 +61,37 @@ Feature: Target.com website
 
 
 
+  Scenario Outline:  Verify that every product on Target search results page has
+    Given  Open target main page
+    When   looking for <item_for_search>
+    And    click to add to the cart
+    And    store product name
+    And    confirm add to card right side the page
+    And    open target cart page
+    Then   Verify cart has <item_for_search>
 
 
+    Examples:
+      |item_for_search                                |
+      |Women's Cropped Zip-Up Hoodie                  |
+      |denizen levis mens                             |
 
 
+  Scenario Outline:  Create a test case with a loop
+    Given  Open target main page
+    When   looking for <item_for_search>
+    And    click to add to the cart
+    And    store product name
+    And    open product details
+    Then   verify user can click through color
+
+    Examples:
+      |item_for_search                                |
+      |Women's Cropped Zip-Up Hoodie                 |
+      |denizen levis mens                             |
+
+
+    Scenario:  Verify every item has name and img
+    Given  Open target main page
+    When   looking for AirPods
+    Then    Verify every item has name and img

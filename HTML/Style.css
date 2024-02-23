@@ -1,0 +1,12 @@
+.Bottom_image {
+    position:absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+}
+
+h1{
+    color: blue;
+
+}
