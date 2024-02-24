@@ -10,6 +10,7 @@ class LoginPage(Page):
     USER_NAME = (By.CSS_SELECTOR, "#username")
     PASSWORD = (By.CSS_SELECTOR,"#password")
     SIGNIN_BUTTON = (By.CSS_SELECTOR, "#login")
+    TERM_CONDITIONS = (By.XPATH, "//a[text()='Target terms and conditions']")
 
     def right_side_navigation_menu(self):
         self.wait_element_clickable_click(*self.SIGN_IN_NAV_TEXT)
@@ -29,3 +30,6 @@ class LoginPage(Page):
         self.click(*self.SIGNIN_BUTTON)
         sleep(6)
 
+    def click_on_target_terms_and_conditions(self):
+        self.click(*self.TERM_CONDITIONS)
+        sleep(6)

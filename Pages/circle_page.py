@@ -7,6 +7,7 @@ from time import sleep
 class CirclePage(Page):
     TABS = (By.CSS_SELECTOR, "[class*='PageSelectionText'] a")
     BONUS_TAB = (By.CSS_SELECTOR, "[data-test='bonus-tab']")
+    GOOGLE_PLAY_BTN = (By.CSS_SELECTOR, "[alt='Get it on Google Play']")
 
     def open_circle(self):
         self.open("https://www.target.com/circle")
@@ -23,4 +24,8 @@ class CirclePage(Page):
             self.wait_url_changes(current_url)
             current_url = self.driver.current_url
 
+    def click_google_play_btn(self):
+        self.wait_element_clickable_click(*self.GOOGLE_PLAY_BTN)
 
+    def google_play_opened(self):
+        self.verify_partial_url("https://play.google.com/store/apps/")

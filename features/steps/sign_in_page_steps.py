@@ -11,5 +11,12 @@ def user_user_name(context):
     context.app.sign_in_page.password()
     context.app.sign_in_page.sign_in_button()
 
-# @then("Input email and password on SignIn page")
 
+@when("Store original windows")
+def store_original_windows(context):
+    context.original_windows = context.driver.current_window_handle
+
+
+@when("Click on Target terms and conditions link")
+def click_on_target_terms_and_conditions(context):
+    context.app.sign_in_page.click_on_target_terms_and_conditions()

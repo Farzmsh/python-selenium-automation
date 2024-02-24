@@ -5,7 +5,8 @@ from Pages.main_page import MainPage
 from Pages.search_results_page import SearchResultsPage
 from Pages.cart_page import CartPage
 from Pages.circle_page import CirclePage
-from Pages.sign_in_page import LoginPage, LoginPage
+from Pages.sign_in_page import LoginPage
+from Pages.terms_and_conditions import TermsAndConditions
 
 
 class Application:
@@ -17,6 +18,6 @@ class Application:
         self.cart_page = CartPage(driver)
         self.circle_page = CirclePage(driver)
         self.sign_in_page = LoginPage(driver)
-
+        self.terms_and_conditions = TermsAndConditions(driver)
 
 
