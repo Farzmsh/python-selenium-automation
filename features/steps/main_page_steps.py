@@ -89,3 +89,13 @@ def right_side_navigation_menu(context):
     context.app.sign_in_page.right_side_navigation_menu()
 
 
+@when ("Hover over signin")
+def hover_signin_btn(contex):
+    contex.app.header.hover_signin_btn()
+    sleep(6)
+
+
+@then("Verify signin arrow shown")
+def verify_signin_arrow(contex):
+    contex.app.header.verify_signin_arrow()
+    sleep(6)
