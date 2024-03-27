@@ -3,7 +3,7 @@ Feature:Target Circle tests
     Given Open Circle page
     Then Verify that clicking though circle tabs works
 
-
+@smoke
   Scenario: User is able to navigate to Google Play Target page
     Given Open Circle page
     And Store original window

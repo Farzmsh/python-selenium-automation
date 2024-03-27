@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 @given('Open Circle page')
 def open_circle_page(context):
@@ -38,7 +40,6 @@ def switch_to_new_window(context):
 @then('Verify Google Play Target page opened')
 def verify_google_play_opened(context):
     context.app.circle_page.google_play_opened()
-
 
 @then('Close current page')
 def close(context):

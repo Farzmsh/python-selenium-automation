@@ -9,6 +9,7 @@ class CirclePage(Page):
     BONUS_TAB = (By.CSS_SELECTOR, "[data-test='bonus-tab']")
     GOOGLE_PLAY_BTN = (By.CSS_SELECTOR, "[alt='Get it on Google Play']")
 
+
     def open_circle(self):
         self.open("https://www.target.com/circle")
 

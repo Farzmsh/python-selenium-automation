@@ -26,3 +26,6 @@ def step_impl(context,item_for_search):
     print(actual_item_in_the_cart)
     assert context.products_name_side_nav in actual_item_in_the_cart, f"{item_for_search} is not in cart"
     print("test passed")
+
+
+

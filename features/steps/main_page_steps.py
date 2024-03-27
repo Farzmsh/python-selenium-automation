@@ -19,6 +19,7 @@ def open_target_main(context):
     context.app.main_page.open_main()
 
 
+
 @when('Search for {product}')
 def search_product(context,product):
     context.app.header.search_product()

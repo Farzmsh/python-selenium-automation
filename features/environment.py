@@ -3,9 +3,9 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from App.Application import Application
+from support.logger import logger
 
 
 #  these are called HOKE
@@ -28,9 +28,9 @@ def browser_init(context):
 
     context.app = Application(context.driver)
 
-    # driver_path = GeckoDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Firefox(service=service)
+    driver_path = GeckoDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Firefox(service=service)
 
     ### BROWSERS WITH DRIVERS: provide path to the driver file ###
     # service = Service(executable_path='C:\Users\farzm\Desktop\python-selenium-automation\App\msedgedriver.exe')
@@ -50,8 +50,8 @@ def browser_init(context):
 
     ### BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    # bs_user = ''
-    # bs_key = ''
+    # bs_user = 'farzanehmashayek_sNmfcb'
+    # bs_key = '19yEzSWU8myQtsquQGSA'
     # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
     # #
     # options = Options()
@@ -67,11 +67,13 @@ def browser_init(context):
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
+    logger.info(f"Before scenario,{scenario.name}")
     browser_init(context)
 
 
 def before_step(context, step):
     print('\nStarted step: ', step)
+    logger.info(f'Step: {step.name}')
 
 
 #if scenario failed

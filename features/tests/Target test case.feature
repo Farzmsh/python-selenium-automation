@@ -93,5 +93,5 @@ Feature: Target.com website
 
     Scenario:  Verify every item has name and img
     Given  Open target main page
-    When   looking for AirPods
+    When   Search for coffee
     Then    Verify every item has name and img
